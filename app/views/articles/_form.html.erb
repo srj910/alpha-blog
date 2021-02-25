@@ -9,6 +9,7 @@
             <%= f.text_field :title, class: "form-control shadow rounded", placeholder: "Title of article" %>
           </div>
         </div>
+
         <div class="form-group row">
           <%= f.label :description, class: "col-2 col-form-label text-light" %>
           <div class="col-10">
@@ -17,12 +18,9 @@
         </div>
 
         <div class="form-group row justify-content-center">
-          <%= f.submit class: "btn btn-outline-light btn-lg" %>
-         </div>
+          <%= f.submit class: "btn btn-outline-light btn-lg mr-4" %>
+          <%= f.button "Cancel and Return to List", action: articles_path, class: "btn btn-outline-danger btn-lg" %>
+        </div>
       <% end %>
-      <div class="form-group row justify-content-center">
-        <%= link_to '[Cancel and return to articles listing]', articles_path, class: "text-info" %>
-      </div>
-    </div>
   </div>
 </div>
