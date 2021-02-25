@@ -6,7 +6,7 @@
       <div class="col-8 mt-4">
         <div class="card text-center mb-5 bg-white rounded border border-dark">
           <div class="card-header font-italic" style="background-color: #00779E">
-            by Stephen Jacobs
+            by <%= article.user.username %>
           </div>
           <div class="card-body" style="background-color: #eeeeee">
             <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success" %></h5>
