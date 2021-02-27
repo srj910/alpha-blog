@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [:create, :new, :edit, :update, :destroy]
   def show
     
   end
@@ -10,7 +11,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.user = User.first
+    @article.user = logged_in_user
     if @article.save
       flash[:notice] = "Article was created successfully"
       redirect_to @article
@@ -52,4 +53,12 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title, :description)
   end
+
+  def require_login
+    unless session[:user_id]
+      flash[:error] = "You must be logged in to access this feature"
+      redirect_to login_path # halts request cycle
+    end
+  end
+
 end
